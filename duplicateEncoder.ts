@@ -19,3 +19,20 @@ function duplicateEncode(word: string): string {
 
   return result;
 }
+
+// Alternative solution
+
+export function duplicateEncode(word: string) {
+  const string: { [key: string]: number } = {};
+  const d: any = [];
+  const lowercase = word.toLowerCase();
+
+  for (const num of lowercase) {
+    string[num] = (string[num] || 0) + 1;
+  }
+  for (const num of lowercase) {
+    string[num] === 1 ? d.push("(") : d.push(")");
+
+    return d.join("");
+  }
+}
