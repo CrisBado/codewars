@@ -23,16 +23,15 @@ function duplicateEncode(word: string): string {
 // Alternative solution
 
 export function duplicateEncode(word: string) {
-  const string: { [key: string]: number } = {};
-  const d: any = [];
-  const lowercase = word.toLowerCase();
+  const charCount: { [key: string]: number } = {};
+  const result: any = [];
+  const lowerCase = word.toLowerCase();
 
-  for (const num of lowercase) {
-    string[num] = (string[num] || 0) + 1;
+  for (const num of lowerCase) {
+    charCount[num] = (charCount[num] || 0) + 1;
   }
-  for (const num of lowercase) {
-    string[num] === 1 ? d.push("(") : d.push(")");
-
-    return d.join("");
+  for (const num of lowerCase) {
+    charCount[num] === 1 ? result.push("(") : result.push(")");
   }
+  return result.join("");
 }
