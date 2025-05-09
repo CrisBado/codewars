@@ -18,3 +18,9 @@ function uniqueInOrder<T>(iterable: T[] | string): T[] {
   });
   return result;
 }
+
+// Alternative solution
+function uniqueInOrder<T>(iterable: T[] | string): T[] {
+  const arr = typeof iterable === "string" ? iterable.split("") : iterable;
+  return arr.filter((item, index) => item !== arr[index - 1]) as T[];
+}
