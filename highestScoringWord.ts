@@ -13,6 +13,16 @@ All letters will be lowercase and all inputs will be valid.
 export const high = (str: string): string => {
   const s = [...Array(26)].map((_, i) => String.fromCharCode(i + 97));
   const fh = str.split(" ");
+  const jd = fh.map((w) => {
+    return w;
+  });
+  const kd: number[] = [];
+  const ss = jd.map((s, i) => {
+    const sf = s.toLowerCase().charCodeAt(0) - 97 + 1;
+    return kd.push(sf);
+  });
 
-  return "k";
+  console.log(kd.sort((a, b) => a - b));
+
+  return "";
 };
