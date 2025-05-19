@@ -9,20 +9,11 @@ If two words score the same, return the word that appears earliest in the origin
 
 All letters will be lowercase and all inputs will be valid.
 */
-
-export const high = (str: string): string => {
-  const s = [...Array(26)].map((_, i) => String.fromCharCode(i + 97));
-  const fh = str.split(" ");
-  const jd = fh.map((w) => {
-    return w;
-  });
-  const kd: number[] = [];
-  const ss = jd.map((s, i) => {
-    const sf = s.toLowerCase().charCodeAt(0) - 97 + 1;
-    return kd.push(sf);
-  });
-
-  console.log(kd.sort((a, b) => a - b));
-
-  return "";
-};
+function high(x: string): string {
+  const words = x.split(" ");
+  const scores = words.map((word) =>
+    word.split("").reduce((acc, char) => acc + char.charCodeAt(0) - 96, 0)
+  );
+  const maxScore = Math.max(...scores);
+  return words[scores.indexOf(maxScore)];
+}
