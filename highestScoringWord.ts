@@ -12,7 +12,9 @@ All letters will be lowercase and all inputs will be valid.
 function high(x: string): string {
   const words = x.split(" ");
   const scores = words.map((word) =>
-    word.split("").reduce((acc, char) => acc + char.charCodeAt(0) - 96, 0)
+    word.split("").reduce((acc, char) => {
+      return acc + (char.charCodeAt(0) - 96);
+    }, 0)
   );
   const maxScore = Math.max(...scores);
   return words[scores.indexOf(maxScore)];
