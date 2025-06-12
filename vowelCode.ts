@@ -12,7 +12,7 @@ For example, encode("hello") would return "h2ll4". There is no need to worry abo
 export function encode(string: string): string {
   const vowels = ["a", "e", "i", "o", "u"];
   const as = string.split("");
-  const sd = as.map((a, i) => {
+  const sd = as.map((a) => {
     if (vowels.includes(a)) {
       return vowels.indexOf(a) + 1;
     }
