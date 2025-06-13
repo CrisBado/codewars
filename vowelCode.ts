@@ -11,12 +11,24 @@ For example, encode("hello") would return "h2ll4". There is no need to worry abo
 
 export function encode(string: string): string {
   const vowels = ["a", "e", "i", "o", "u"];
-  const as = string.split("");
-  const sd = as.map((a) => {
+  const toArray = string.split("");
+  const encode = toArray.map((a) => {
     if (vowels.includes(a)) {
       return vowels.indexOf(a) + 1;
     }
     return a;
   });
-  return sd.join("");
+  return encode.join("");
+}
+
+export function decode(string: string): string {
+  const vowels = ["a", "e", "i", "o", "u"];
+  const toArray = string.split("");
+  const decoded = toArray.map((char) => {
+    if ("12345".includes(char)) {
+      return vowels[parseInt(char) - 1];
+    }
+    return char;
+  });
+  return decoded.join("");
 }
