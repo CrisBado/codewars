@@ -20,6 +20,17 @@ export function encode(string: string): string {
   });
   return encode.join("");
 }
+// Alternate solution using a regular expression
+export function encode(string: string): string {
+  return string.replace(/[aeiou]/g, (match) =>
+    ("aeiou".indexOf(match) + 1).toString()
+  );
+}
+
+/*
+Step 2: Create a function called decode() to replace all the numbers in a given string with the corresponding vowels according 
+to the pattern above. For example, decode("h2ll4") would return "hello".
+*/
 
 export function decode(string: string): string {
   const vowels = ["a", "e", "i", "o", "u"];
@@ -31,4 +42,9 @@ export function decode(string: string): string {
     return char;
   });
   return decoded.join("");
+}
+
+// Alternate solution using a regular expression
+export function decode(string: string): string {
+  return string.replace(/[1-5]/g, (match) => "aeiou"[parseInt(match) - 1]);
 }
