@@ -38,3 +38,9 @@ function sortTheOdd(arr: number[]): number[] {
     return num;
   });
 }
+
+// Alternative solution using filter and map
+function sortTheArray(array) {
+  const odd = array.filter((x) => x % 2).sort((a, b) => a - b);
+  return array.map((x) => (x % 2 ? odd.shift() : x));
+}
