@@ -16,7 +16,7 @@ function sortArray(array: number[]) {
   });
   const oddSorted = odd.sort((a, b) => {
     return a - b;
-  }); // Return a sorted array.
+  });
 
   const result = array.map((b) => {
     if (b % 2 != 0) {
@@ -24,4 +24,17 @@ function sortArray(array: number[]) {
     } else return b;
   });
   return result;
+}
+
+// Alternative solution using forEach
+function sortTheOdd(arr: number[]): number[] {
+  const oddNumbers = arr.filter((num) => num % 2 !== 0).sort((a, b) => a - b);
+  let oddIndex = 0;
+
+  return arr.map((num) => {
+    if (num % 2 !== 0) {
+      return oddNumbers[oddIndex++];
+    }
+    return num;
+  });
 }
