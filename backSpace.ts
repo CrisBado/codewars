@@ -21,3 +21,23 @@ function cleanString(s: string): string {
   }
   return result.join("");
 }
+// Alternative solution
+function cleanString(s: string): string {
+  let result = "";
+  for (const char of s) {
+    if (char === "#") {
+      result = result.slice(0, -1);
+    } else {
+      result += char;
+    }
+  }
+  return result;
+}
+
+export const meeting = (s: string) => {
+  return s
+    .split(";")
+    .map((f) => `(${f.toUpperCase().split(":").reverse().join(", ")})`)
+    .sort()
+    .join("");
+};
