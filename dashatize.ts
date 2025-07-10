@@ -30,3 +30,11 @@ function dashatize(num: number): string {
 
   return result;
 }
+// Alternative solution using regex
+function dashatize(num: number): string {
+  if (isNaN(num)) return "NaN";
+  return Math.abs(num)
+    .toString()
+    .replace(/([13579])/g, "-$1-")
+    .replace(/^-|-$/g, "");
+}
