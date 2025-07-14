@@ -10,23 +10,14 @@ For example:
 "Example Input" ==> "iNPUT eXAMPLE"
 You may assume the input only contain English alphabet and spaces.
 */
+
 export function stringTransformer(str: any) {
-  if (str === "") return;
-  const ksf = str.split();
-  //   console.log(ksf)
-  const fg: string[] = [];
-  ksf.map((a: string) => {
-    a.split("").map((a: string) => {
-      if (a === a.toUpperCase()) {
-        //         console.log(a.toLowerCase())
-        fg.push(a.toLowerCase());
-      }
-      if (a === a.toLowerCase()) {
-        //         console.log(a.toUpperCase())
-        fg.push(a.toUpperCase());
-      }
-    });
-  });
-  console.log(fg.join("").split(" ").reverse().join(" "));
-  return fg.join("").split(" ").reverse().join(" ");
+  const wordsArray = str.split(" ").reverse().join(" ").split("");
+
+  const result = wordsArray
+    .map((a: string) => {
+      return a === a.toUpperCase() ? a.toLowerCase() : a.toUpperCase();
+    })
+    .join("");
+  return result;
 }
