@@ -12,6 +12,12 @@ Words are made up of lowercase letters.
 */
 
 function sortTheInnerContent(words: string): string {
-  console.log(words);
-  return words;
+  return words
+    .split(" ")
+    .map((word) => {
+      if (word.length <= 2) return word;
+      const inner = word.slice(1, -1).split("").sort().reverse().join("");
+      return word[0] + inner + word[word.length - 1];
+    })
+    .join(" ");
 }
