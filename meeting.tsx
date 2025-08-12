@@ -26,3 +26,16 @@ export function meeting(s: string): string {
 
   return `(${result})`;
 }
+
+//Alternative solution using
+function meetings(s: string): string {
+  return s
+    .toUpperCase()
+    .split(";")
+    .map((guest) => {
+      const [firstName, lastName] = guest.split(":");
+      return `(${lastName}, ${firstName})`;
+    })
+    .sort()
+    .join("");
+}
