@@ -17,3 +17,18 @@ function multiplesOf3And5(number: number): number {
   }
   return sum;
 }
+
+//Alternative solution
+function multiplesOf3Or5(number: number): number {
+  if (number < 0) return 0;
+
+  const multiples: Set<number> = new Set();
+
+  for (let i = 0; i < number; i++) {
+    if (i % 3 === 0 || i % 5 === 0) {
+      multiples.add(i);
+    }
+  }
+
+  return Array.from(multiples).reduce((sum, current) => sum + current, 0);
+}
