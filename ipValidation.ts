@@ -27,8 +27,6 @@ export function isValidIP(str: string): boolean {
     if (Number(e) >= 0 && Number(e) <= 255) hs.push(e);
   });
 
-  console.log(hs);
-
   const jk = hs.length === 4 && ld.length === 3;
   return jk;
 }
