@@ -17,16 +17,29 @@ Inputs are guaranteed to be a single string
 
 */
 
-export function isValidIP(str: string): boolean {
-  const array = str.split("");
-  let ld: string[] = [];
-  let hs: string[] = [];
+export function isValidIP(str: string) {
+  const octets = str.split(".");
 
-  array.map((e) => {
-    if (e === ".") ld.push(e);
-    if (Number(e) >= 0 && Number(e) <= 255) hs.push(e);
-  });
+  if (octets.length !== 4) {
+    return false;
+  }
 
-  const jk = hs.length === 4 && ld.length === 3;
-  return jk;
+  const isOnlyDigits = /^\d+$/;
+
+  for (const octet of octets) {
+    if (!isOnlyDigits.test(octet)) {
+      return false;
+    }
+
+    if (octet.length > 1 && octet.startsWith("0")) {
+      return false;
+    }
+
+    const num = Number(octet);
+    if (num < 0 || num > 255) {
+      return false;
+    }
+  }
+
+  return true;
 }
