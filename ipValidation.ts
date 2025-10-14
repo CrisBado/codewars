@@ -24,6 +24,7 @@ export function isValidIP(str: string) {
     return false;
   }
 
+  // Check if all octets are valid numbers
   const isOnlyDigits = /^\d+$/;
 
   for (const octet of octets) {
