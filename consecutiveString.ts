@@ -20,3 +20,19 @@ export function longestConsec(strarr: string[], k: number): string {
 
   return longestElement;
 }
+
+// Alternative solution
+export function longestConsec(strarr: string[], k: number): string {
+  if (k <= 0 || k > strarr.length) return "";
+
+  let longest = "";
+
+  for (let i = 0; i <= strarr.length - k; i++) {
+    const currentConcatenatedString = strarr.slice(i, i + k).join("");
+    if (currentConcatenatedString.length > longest.length) {
+      longest = currentConcatenatedString;
+    }
+  }
+
+  return longest;
+}
