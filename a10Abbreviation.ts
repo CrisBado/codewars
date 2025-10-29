@@ -21,3 +21,23 @@ export function abbreviate(str: string): string {
     })
     .join("");
 }
+
+// Alternative solution using regex replace
+
+export function abbreviate(str: string): string {
+  return str.replace(/[a-zA-Z]{4,}/g, (word) => {
+    const numberOfChar = word.length - 2;
+    return `${word.charAt(0)}${numberOfChar}${word.charAt(word.length - 1)}`;
+  });
+}
+
+//Alternative solution using regex replace with lookahead and lookbehind
+
+export function abbreviate(str: string): string {
+  return str.replace(/[a-z]{4,}/gi, (match) => {
+    const firstLetter = match[0];
+    const lastLetter = match[match.length - 1];
+    const abbreviation = `${firstLetter}${match.length - 2}${lastLetter}`;
+    return abbreviation;
+  });
+}
