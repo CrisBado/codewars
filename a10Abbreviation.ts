@@ -9,15 +9,15 @@ then the last letter (eg. "elephant ride" => "e6t r2e").
 */
 
 export function abbreviate(str: string): string {
-  const asd = str.split(" ");
+  const array = str.split(/([^A-Za-z])/g);
 
-  asd.map((a: string) => {
-    if (a.length <= 3) return a;
-    const num = a.length - 2;
-    const first = a.charAt(0);
-    const last = a.charAt(a.length - 1);
-    return `${first}${num}${last}`;
-  });
-
-  return "string";
+  return array
+    .map((e: string) => {
+      if (e.length <= 3) return e;
+      const numberOfChar = e.length - 2;
+      const firstLetter = e.charAt(0);
+      const lastLetter = e.charAt(e.length - 1);
+      return `${firstLetter}${numberOfChar}${lastLetter}`;
+    })
+    .join("");
 }
