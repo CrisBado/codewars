@@ -21,11 +21,18 @@ export function decipherThis(str: string): string {
 
   return array
     .map((e: string) => {
-      const secondLetter = "";
-      const firstLetter = String.fromCharCode(Number(e.charAt(0)));
-      const lastLetter = e.charAt(e.length - 1);
-      //       console.log(lastLetter )
-      //       return `${firstLetter}${lastLetter}${numberOfChar}`;
+      const num = parseInt(e, 10);
+      const containsAlphabet = /[a-z]/i.test(e);
+
+      const secondLetter = containsAlphabet
+        ? e.match(/[a-z]/i)
+        : String.fromCharCode(num);
+      //       console.log(secondLetter)
+      const firstLetter = String.fromCharCode(num);
+      const lastLetter = containsAlphabet ? e.charAt(e.length - 1) : "";
+      console.log(` ${lastLetter},  ${secondLetter}, `);
+
+      return "kd";
     })
     .join("");
 }
