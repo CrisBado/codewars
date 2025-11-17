@@ -15,24 +15,34 @@ Examples
 */
 
 export function decipherThis(str: string): string {
-  //     console.log(String.fromCharCode(72))
-
   const array = str.split(" ");
 
-  return array
-    .map((e: string) => {
-      const num = parseInt(e, 10);
-      const containsAlphabet = /[a-z]/i.test(e);
+  const result = array.map((e: string) => {
+    const number = [];
+    const string = [];
+    for (let i = 0; i < e.length; i++) {
+      if (!Number.isNaN(parseInt(e.charAt(i)))) {
+        number.push(e.charAt(i));
+      } else {
+        string.push(e.charAt(i));
+      }
+    }
 
-      const secondLetter = containsAlphabet
-        ? e.match(/[a-z]/i)
-        : String.fromCharCode(num);
-      //       console.log(secondLetter)
-      const firstLetter = String.fromCharCode(num);
-      const lastLetter = containsAlphabet ? e.charAt(e.length - 1) : "";
-      console.log(` ${lastLetter},  ${secondLetter}, `);
+    const asciiNumber = number.join("");
+    const convertToNumber = parseInt(asciiNumber, 10);
+    const newFirstElement = String.fromCharCode(convertToNumber);
 
-      return "kd";
-    })
-    .join("");
+    const newArray: string[] = [newFirstElement].concat(string);
+
+    // Replace the second element ('e') with the last element ('a')
+    const secondIndex = 1;
+    const lastIndex = newArray.length - 1;
+    const temp = newArray[secondIndex];
+    newArray[secondIndex] = newArray[lastIndex];
+    newArray[lastIndex] = temp;
+
+    return newArray.join("");
+  });
+
+  return result.join(" ");
 }
