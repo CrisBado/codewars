@@ -30,3 +30,11 @@ export function isValidWalk(walk: string[]) {
 
   return directions.n === directions.s && directions.w === directions.e;
 }
+
+// Alternative solution
+export const isValidWalkAlt = (walk: string[]): boolean => {
+  const count = (v: string) => walk.filter((a: string) => a === v).length;
+  return (
+    walk.length === 10 && count("n") === count("s") && count("e") === count("w")
+  );
+};
