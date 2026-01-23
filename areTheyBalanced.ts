@@ -14,7 +14,13 @@ function balance(left: string, right: string): string {
   //coding and coding....
   const arrayFromLeft = left.split("").map((e) => (e == "!" ? 2 : 3));
   const arrayFromRight = right.split("").map((e) => (e == "!" ? 2 : 3));
-  console.log(right);
-  console.log(arrayFromRight);
-  return "Balance";
+
+  const sumLeft = arrayFromLeft.reduce((accumulator, currentValue) => {
+    return accumulator + currentValue;
+  }, 0);
+  const sumRight = arrayFromRight.reduce((accumulator, currentValue) => {
+    return accumulator + currentValue;
+  }, 0);
+
+  return sumLeft > sumRight ? "Left" : sumRight > sumLeft ? "Right" : "Balance";
 }
