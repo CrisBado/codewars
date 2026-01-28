@@ -59,3 +59,30 @@ export function dirReduc(arr: string[]): string[] {
 
   return stack;
 }
+
+// Alternative solution using map
+
+export function dirReduc(arr: string[]): string[] {
+  type Direction = "NORTH" | "SOUTH" | "EAST" | "WEST";
+
+  const stack: Direction[] = [];
+
+  const opposites: { [key: string]: string } = {
+    NORTH: "SOUTH",
+    SOUTH: "NORTH",
+    EAST: "WEST",
+    WEST: "EAST",
+  };
+
+  arr.map((direction) => {
+    const lastItem = stack[stack.length - 1];
+
+    if (lastItem && direction === opposites[lastItem]) {
+      stack.pop();
+    } else {
+      stack.push(direction as Direction);
+    }
+  });
+
+  return stack;
+}
