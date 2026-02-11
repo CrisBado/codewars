@@ -10,11 +10,10 @@ It’s guaranteed that array contains more than 2 strings.
 */
 
 export function findUniq(arr: string[]): string {
-  const arrays = ["abc", "acb", "bac", "foo", "bca", "cab", "cba"].map((a) => {
-    return new Set([...a.toLowerCase()]);
+  const arrays = arr.map((a) => {
+    return [...new Set(a.toLowerCase())].sort().join("");
   });
-
-  console.log(arrays);
-
-  return arr[0];
+  return arr.find(
+    (str, i) => arrays.indexOf(arrays[i]) === arrays.lastIndexOf(arrays[i]),
+  )!;
 }
