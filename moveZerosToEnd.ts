@@ -10,3 +10,19 @@ function moveZeros<T>(arr: T[]) {
   ];
   return moved;
 }
+
+// Alternative solution using a single pass
+function moveZerosSinglePass<T>(arr: T[]) {
+  const result: T[] = [];
+  let zeroCount = 0;
+
+  for (const item of arr) {
+    if (item === 0) {
+      zeroCount++;
+    } else {
+      result.push(item);
+    }
+  }
+
+  return [...result, ...Array(zeroCount).fill(0)];
+}
