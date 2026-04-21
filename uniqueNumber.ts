@@ -12,3 +12,23 @@ function findUnique(numbers: number[]): number | undefined {
 
   return unique[0];
 }
+
+// Alternative solution optimized for speed using Map
+
+function findUniqueFast(numbers: number[]): number | undefined {
+  const counts = new Map<number, number>();
+
+  // Count occurrences of each number
+  for (const num of numbers) {
+    counts.set(num, (counts.get(num) || 0) + 1);
+  }
+
+  // Find the first number with a count of 1
+  for (const num of numbers) {
+    if (counts.get(num) === 1) {
+      return num;
+    }
+  }
+
+  return undefined;
+}
